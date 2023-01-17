@@ -1,4 +1,13 @@
-﻿@page "/"
+﻿@using Microsoft.AspNetCore.Identity;
+@using System.Security.Claims;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject AuthenticationStateProvider _authenticationStateProvider;
+@inject Data.MyRoleHandler _myRoleHandler;
+@inject IServiceProvider _iServiceProvider
+
+@page "/"
 
 <PageTitle>Index</PageTitle>
 
@@ -6,4 +15,26 @@
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@if (IsAuthenticated)
+{
+    <h3>Du er logget ind.</h3>
+}
+@if (IsAdmin)
+{
+    <h3>Du er admin.</h3>
+}
+
+@code {
+    public bool IsAuthenticated { get; set; }
+    public bool IsAdmin { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        //await _myRoleHandler.CreateUserRoles("mm_9290@hotmail.com", "Admin", _iServiceProvider);
+        AuthenticationState authState = await _authenticationStateProvider.GetAuthenticationStateAsync();
+        ClaimsPrincipal user = authState.User;
+
+        IsAuthenticated = user.Identity != null ? user.Identity.IsAuthenticated : false;
+        IsAdmin = user.IsInRole("Admin");
+    }
+}

@@ -15,10 +15,25 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAuthenticatedUser", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+    });
+    options.AddPolicy("RequireSuperUserRole", policy =>
+    {
+        policy.RequireRole("SuperUser");
+    });
+});
+
+builder.Services.AddSingleton<MyRoleHandler>();
 
 var app = builder.Build();
 
