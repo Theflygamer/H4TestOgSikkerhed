@@ -1,19 +1,25 @@
+using H4TestOgSikkerhed.Data;
+
 namespace H4TestOgSikkerhedTest
 {
-    public class ResourcehandlierTest
+    public class ResourceHandlerTest
     {
         [Fact]
         public void CreateTestFile()
         {
-            bool IsSuccess = true;
-            {
-                
-                bool tt = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            // Arrange
+            string filename = "unittest.txt";
+            string path = "UnitTest";
+            string error = "";
+            bool success = false;
+            MyResourceHandler myResourceHandler = new();
 
+            // Act
+            success = myResourceHandler.TryCreateFile(path, filename, out error);
 
-            }
-
-
+            // Assert
+            Assert.True(success);
+            Assert.Empty(error);
         }
     }
 }
