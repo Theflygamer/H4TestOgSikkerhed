@@ -20,15 +20,18 @@ namespace H4TestOgSikkerhed.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<LoginWith2faModel> _logger;
+        private readonly IEmailService _emailService;
 
         public LoginWith2faModel(
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
-            ILogger<LoginWith2faModel> logger)
+            ILogger<LoginWith2faModel> logger,
+            IEmailService emailService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _logger = logger;
+            _emailService = emailService;
         }
 
         /// <summary>
@@ -89,7 +92,7 @@ namespace H4TestOgSikkerhed.Areas.Identity.Pages.Account
 
             string token = await _userManager.GenerateTwoFactorTokenAsync(user, TokenOptions.DefaultEmailProvider);
 
-            MyEmailService.SendTwoFactorCode(token);
+            _emailService.SendTwoFactorCode(token);
 
             return Page();
         }
