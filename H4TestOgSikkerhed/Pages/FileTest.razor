@@ -1,4 +1,5 @@
-﻿@page "/filetest"
+﻿@using H4TestOgSikkerhed.Data
+@page "/filetest"
 
 <PageTitle>File Test</PageTitle>
 
@@ -23,29 +24,19 @@ Press the button to try creating a file on the server.
 
 @code {
     private string path = "";
-    private string filename = "test";
+    private string filename = "test.txt";
     private bool tried = false;
     private bool success = false;
     private string error = "";
 
+    private MyResourceHandler _myResourceHandler = new MyResourceHandler();
+
     private void TryCreateFile()
     {
         char sep = Path.DirectorySeparatorChar;
-        path = $".{sep}Data{sep}test";
+        path = $"Data";
 
-        try 
-        {
-            Directory.CreateDirectory(path);
-            FileStream file = File.Create($"{path}{sep}{filename}.txt");
-            file.Close();
-            File.WriteAllText($"{path}{sep}{filename}.txt", "File created by Blazor Server");
-            success = true;
-        }
-        catch (IOException ex)
-        {
-            success = false;
-            error = ex.Message;
-        }
+        success = _myResourceHandler.TryCreateFile(path, filename, out error);
 
         tried = true;
     }
