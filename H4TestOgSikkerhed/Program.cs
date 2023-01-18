@@ -34,6 +34,7 @@ builder.Services.AddAuthorization(options =>
 });
 
 builder.Services.AddSingleton<MyRoleHandler>();
+builder.Services.AddSingleton<IEmailService, EmailToFileService>();
 builder.Services.AddSingleton<MyResourceHandler>();
 
 var app = builder.Build();
