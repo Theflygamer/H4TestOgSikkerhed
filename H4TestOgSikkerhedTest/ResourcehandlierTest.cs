@@ -18,8 +18,26 @@ namespace H4TestOgSikkerhedTest
             success = myResourceHandler.TryCreateFile(path, filename, out error);
 
             // Assert
-            Assert.True(success);
+            Assert.True(success, error);
             Assert.Empty(error);
         }
+
+        [Fact] public void DeleteFile() 
+        {
+            string filename = "unittest.txt";
+            string path = "UnitTest";
+            string error = "";
+            bool success = false;
+            MyResourceHandler myResourceHandler = new();
+
+            success = myResourceHandler.TryDeleteFile(path,filename, out error);
+
+            Assert.True(success, error);
+            Assert.Empty(error);
+
+
+        }
+
+
     }
 }
