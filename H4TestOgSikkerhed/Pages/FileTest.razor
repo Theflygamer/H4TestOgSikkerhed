@@ -1,5 +1,6 @@
 ﻿@using H4TestOgSikkerhed.Data
 @page "/filetest"
+@inject MyResourceHandler MyResourceHandler
 
 <PageTitle>File Test</PageTitle>
 
@@ -29,14 +30,11 @@ Press the button to try creating a file on the server.
     private bool success = false;
     private string error = "";
 
-    private MyResourceHandler _myResourceHandler = new MyResourceHandler();
-
     private void TryCreateFile()
     {
-        char sep = Path.DirectorySeparatorChar;
         path = $"Data";
 
-        success = _myResourceHandler.TryCreateFile(path, filename, out error);
+        success = MyResourceHandler.TryCreateFile(path, filename, out error);
 
         tried = true;
     }
