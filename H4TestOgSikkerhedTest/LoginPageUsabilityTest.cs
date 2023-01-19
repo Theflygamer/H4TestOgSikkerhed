@@ -14,7 +14,7 @@ namespace H4TestOgSikkerhedTest
         [Fact]
         public void LoginWithoutTwoFactorTest()
         {
-            // Create a new instance of the Chrome driver
+            // Create a new instance of the Edge driver
             using (var driver = new EdgeDriver())
             {
                 // Navigate to the login page
@@ -47,7 +47,7 @@ namespace H4TestOgSikkerhedTest
         [Fact]
         public void LoginWithTwoFactorTest()
         {
-            // Create a new instance of the Chrome driver
+            // Create a new instance of the Edge driver
             using (var driver = new EdgeDriver())
             {
                 // Navigate to the login page
