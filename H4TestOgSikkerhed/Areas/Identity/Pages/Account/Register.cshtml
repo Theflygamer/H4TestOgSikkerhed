@@ -27,12 +27,16 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <div>
-                
-                <h3 style="float:left">Enable 2FA</h3>
-                <input asp-for="Input.TWOFA" type="checkbox" style="width: 25px; height:25px; float:right" />
+            <div style="display:flex; justify-content:space-between">
+
+                <h4 style="">Enable 2FA</h4>
+                <input asp-for="Input.TWOFA" type="checkbox" style="width: 32px; height:32px;" />
             </div>
+            <hr />
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+
+
+
         </form>
     </div>
 </div>
