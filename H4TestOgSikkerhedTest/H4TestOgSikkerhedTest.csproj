@@ -9,9 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <COMReference Include="UIA">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>930299ce-9965-4dec-b0f4-a54848d4b667</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="bunit.core" Version="1.14.4" />
     <PackageReference Include="bunit.web" Version="1.14.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="Selenium.Support" Version="4.7.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.7.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="109.0.5414.7400" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
