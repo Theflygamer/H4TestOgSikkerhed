@@ -28,7 +28,7 @@ namespace H4TestOgSikkerhed.Data
                 FileStream file = File.Create($"{path}{sep}{filename}");
                 file.Close();
                 File.WriteAllText($"{path}{sep}{filename}", "File created by Blazor Server");
-                error = "";
+                error = ($"{path}{sep}{filename}");
             }
             catch (Exception ex)
             {
