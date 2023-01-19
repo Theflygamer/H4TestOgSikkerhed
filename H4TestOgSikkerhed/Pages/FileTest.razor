@@ -14,11 +14,11 @@ Press the button to try creating a file on the server.
 {
     @if (success)
     {
-        <div>File was created successfully.</div>
+        //<div id="success">File was created successfully at @error</div>
     }
     else
     {
-        <div>File could not be created.</div>
+        <div id="fail">File could not be created.</div>
         <div>@error</div>
     }
 }
@@ -35,6 +35,7 @@ Press the button to try creating a file on the server.
         path = $"Data";
 
         success = MyResourceHandler.TryCreateFile(path, filename, out error);
+
 
         tried = true;
     }
