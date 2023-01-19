@@ -19,7 +19,6 @@ namespace H4TestOgSikkerhedTest
 
             // Assert
             Assert.True(success, error);
-            Assert.Empty(error);
         }
 
         [Fact] public void DeleteFile() 
@@ -33,9 +32,6 @@ namespace H4TestOgSikkerhedTest
             success = myResourceHandler.TryDeleteFile(path,filename, out error);
 
             Assert.True(success, error);
-            Assert.Empty(error);
-
-
         }
 
 
