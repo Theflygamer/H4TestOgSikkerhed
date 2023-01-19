@@ -24,7 +24,7 @@ namespace H4TestOgSikkerhedTest
                 var usernameField = driver.FindElement(By.Id("Input_Email"));
 
                 // Set the username
-                usernameField.SendKeys("mm_9290@hotmail.com");
+                usernameField.SendKeys("test1@test.dk");
 
                 // Find the password text field
                 var passwordField = driver.FindElement(By.Id("Input_Password"));
@@ -57,7 +57,7 @@ namespace H4TestOgSikkerhedTest
                 var usernameField = driver.FindElement(By.Id("Input_Email"));
 
                 // Set the username
-                usernameField.SendKeys("lars@larsen.dk");
+                usernameField.SendKeys("test2@test.dk");
 
                 // Find the password text field
                 var passwordField = driver.FindElement(By.Id("Input_Password"));
