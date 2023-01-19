@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
@@ -16,13 +17,13 @@ namespace H4TestOgSikkerhedTest
         [Fact]
         public void Testfile()
         {
-            using (var webdriver = new ChromeDriver())
+            using (var webdriver = new EdgeDriver())
             {
                 webdriver.Navigate().GoToUrl("https://localhost:7084/filetest");
 
-                WebDriverWait wait = new WebDriverWait(webdriver, new TimeSpan(0, 0, 1));
+                WebDriverWait wait = new WebDriverWait(webdriver, new TimeSpan(0, 0, 3));
 
-                var button = webdriver.FindElement(By.Id("filetest_button"));
+                var button = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("filetest_button")));
                 button.Click();
 
                 string sysPath;
@@ -49,7 +50,7 @@ namespace H4TestOgSikkerhedTest
         [Fact]
         public void IsFileCreated()
         {
-            using(var webdriver = new ChromeDriver())
+            using(var webdriver = new EdgeDriver())
             {
                 webdriver.Navigate().GoToUrl("https://localhost:7084/filetest");
 
@@ -69,7 +70,7 @@ namespace H4TestOgSikkerhedTest
         [Fact]
         public void IsFileFailed()
         {
-            using (var webdriver = new ChromeDriver())
+            using (var webdriver = new EdgeDriver())
             {
                 webdriver.Navigate().GoToUrl("https://localhost:7084/filetest");
 
